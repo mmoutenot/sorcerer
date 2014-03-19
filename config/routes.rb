@@ -1,4 +1,6 @@
 Sorcerer::Application.routes.draw do
+  resources :sources
+
   resources :topics
 
   # The priority is based upon order of creation: first created -> highest priority.
