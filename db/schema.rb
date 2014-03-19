@@ -11,12 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140319010943) do
+ActiveRecord::Schema.define(version: 20140319011240) do
 
   create_table "sources", force: true do |t|
     t.string   "title"
     t.string   "author"
     t.string   "isbn"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "topic_sources", force: true do |t|
+    t.integer  "topic_id"
+    t.integer  "source_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
