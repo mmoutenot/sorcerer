@@ -10,6 +10,7 @@ class TopicsController < ApplicationController
   # GET /topics/1
   # GET /topics/1.json
   def show
+    @topic_sources = @topic.sorted_topic_sources
   end
 
   # GET /topics/new

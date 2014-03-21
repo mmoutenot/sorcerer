@@ -1,9 +1,18 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
+  <strong>Topic:</strong>
   <%= @topic.name %>
 </p>
+
+<% @topic_sources.each do |topic_source| %>
+  <p>
+    "<%= topic_source.source.title %>",
+    <%= topic_source.source.author %>
+    (<%= topic_source.source.isbn %>)
+    Votes: <%= topic_source.net_votes %>
+  </p>
+<% end %>
 
 <%= link_to 'Edit', edit_topic_path(@topic) %> |
 <%= link_to 'Back', topics_path %>
