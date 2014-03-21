@@ -11,6 +11,9 @@
     <%= topic_source.source.author %>
     (<%= topic_source.source.isbn %>)
     Votes: <%= topic_source.net_votes %>
+    <%= form_tag(upvote_topic_source_path(@topic, topic_source.source), :method => 'post') do %>
+      <%= submit_tag '^' %>
+    <% end %>
   </p>
 <% end %>
 

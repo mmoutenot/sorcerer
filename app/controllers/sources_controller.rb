@@ -21,6 +21,14 @@ class SourcesController < ApplicationController
   def edit
   end
 
+  # POST /topics/1/sources/1/upvote
+  def upvote
+    topic_source = TopicSource.find_by(:topic_id => params[:topic_id],
+                                       :source_id => params[:id])
+    topic_source.votes.create
+    redirect_to topic_source.topic
+  end
+
   # POST /sources
   # POST /sources.json
   def create

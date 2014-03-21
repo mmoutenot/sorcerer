@@ -4,6 +4,6 @@ class TopicSource < ActiveRecord::Base
   has_many :votes
 
   def net_votes
-    @net_votes ||= Vote.where(:topic_source => self).count
+    @net_votes ||= votes.count
   end
 end
