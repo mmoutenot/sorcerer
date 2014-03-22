@@ -10,7 +10,13 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//
 //= require jquery
 //= require jquery_ujs
+//
+//= require underscore
+//= require flight-for-rails
+//= require_directory ./components
+//
 //= require turbolinks
 //= require_tree .
