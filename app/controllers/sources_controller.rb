@@ -29,6 +29,12 @@ class SourcesController < ApplicationController
     redirect_to topic_source.topic
   end
 
+  # GET /sources/search
+  def search
+    title_query = params[:title_query]
+    books = GoogleBooks.search(title_query, { :projection => 'lite' })
+  end
+
   # POST /sources
   # POST /sources.json
   def create

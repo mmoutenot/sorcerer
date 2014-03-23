@@ -5,6 +5,10 @@
   <%= @topic.name %>
 </p>
 
+<div class="source-add">
+  Add a source: <input type="search" name="booksearch">
+</div>
+
 <div class="js-topic-source-list">
   <% @topic_sources.each do |topic_source| %>
     <div class="js-topic-source" id="source-<%= topic_source.source_id %>">
