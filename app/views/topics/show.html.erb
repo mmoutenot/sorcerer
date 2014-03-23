@@ -5,20 +5,18 @@
   <%= @topic.name %>
 </p>
 
-<% @topic_sources.each do |topic_source| %>
-  <p>
-    "<%= topic_source.source.title %>",
-    <%= topic_source.source.author %>
-    (<%= topic_source.source.isbn %>)
-    <div class="js-topic-source-vote" href="<%= upvote_topic_source_path(@topic, topic_source.source) %>">
-      Votes:
-      <div class="js-topic-source-vote-count">
-        <%= topic_source.net_votes %>
+<div class="js-topic-source-list">
+  <% @topic_sources.each do |topic_source| %>
+    <div class="js-topic-source" id="source-<%= topic_source.source_id %>">
+      "<%= topic_source.source.title %>",
+      <%= topic_source.source.author %>
+      (<%= topic_source.source.isbn %>)
+      <div class="js-topic-source-voter" id="voter-<%= topic_source.source_id %>" href="<%= upvote_topic_source_path(@topic, topic_source.source) %>">
+       (^) Votes: <span class="js-topic-source-vote-count"> <%= topic_source.net_votes %> </span>
       </div>
-      ^
     </div>
-  </p>
-<% end %>
+  <% end %>
+</div>
 
 <%= link_to 'Edit', edit_topic_path(@topic) %> |
 <%= link_to 'Back', topics_path %>
