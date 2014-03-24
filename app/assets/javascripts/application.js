@@ -16,6 +16,8 @@
 //
 //= require underscore
 //= require flight-for-rails
+//= require twitter/typeahead
+//
 //= require_directory ./components
 //
 //= require turbolinks

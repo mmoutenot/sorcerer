@@ -1,6 +1,10 @@
 Sorcerer::Application.routes.draw do
 
-  resources :sources
+  resources :sources do
+    collection do
+      get 'search'
+    end
+  end
 
   resources :topics do
     resources :sources do

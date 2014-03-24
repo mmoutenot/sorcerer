@@ -1,3 +1,5 @@
+require 'googlebooks'
+
 class SourcesController < ApplicationController
   before_action :set_source, only: [:show, :edit, :update, :destroy]
 
@@ -32,7 +34,17 @@ class SourcesController < ApplicationController
   # GET /sources/search
   def search
     title_query = params[:title_query]
-    books = GoogleBooks.search(title_query, { :projection => 'lite' })
+    g_sources = GoogleBooks.search(title_query, { :projection => 'lite', :count => 5 }).map do |b|
+      {
+        :title => b.title,
+        :isbn => b.isbn,
+        :g_id => b.id,
+        :authors => b.authors,
+        :image => b.image_link,
+      }
+    end
+
+    render :json => g_sources
   end
 
   # POST /sources
@@ -42,11 +54,11 @@ class SourcesController < ApplicationController
 
     respond_to do |format|
       if @source.save
-        format.html { redirect_to @source, notice: 'Source was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @source }
+        format.html { redirect_to @source, :notice => 'Source was successfully created.' }
+        format.json { render action: 'show', :status => :created, :location => @source }
       else
-        format.html { render action: 'new' }
-        format.json { render json: @source.errors, status: :unprocessable_entity }
+        format.html { render :action => 'new' }
+        format.json { render :json => @source.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -56,11 +68,11 @@ class SourcesController < ApplicationController
   def update
     respond_to do |format|
       if @source.update(source_params)
-        format.html { redirect_to @source, notice: 'Source was successfully updated.' }
+        format.html { redirect_to @source, :notice => 'Source was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: 'edit' }
-        format.json { render json: @source.errors, status: :unprocessable_entity }
+        format.html { render :action => 'edit' }
+        format.json { render :json => @source.errors, :status => :unprocessable_entity }
       end
     end
   end
