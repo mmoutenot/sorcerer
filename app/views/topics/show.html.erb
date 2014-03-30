@@ -2,14 +2,14 @@
 
 <h1 class="ui header"><%= @topic.name %></h1>
 
-<div class="ui items js-topic-source-list">
+<div class="ui items topic-sources js-topic-source-list">
   <% @topic_sources.each do |topic_source| %>
     <div class="item js-topic-source" id="source-<%= topic_source.source_id %>">
       <div class="like ui corner label js-topic-source-voter" id="voter-<%= topic_source.source_id %>" href="<%= upvote_topic_source_path(@topic, topic_source.source) %>">
-        <i class="like icon"></i>
+        <i class="circle up icon"></i>
       </div>
       <div class="image">
-        <%= image_tag(topic_source.source.image_url, :alt => "") %>
+        <%= image_tag(topic_source.source.image_url) %>
       </div>
       <div class="content">
         <div class="name"><%= topic_source.source.title %></div>
