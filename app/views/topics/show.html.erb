@@ -1,18 +1,22 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Topic:</strong>
-  <%= @topic.name %>
-</p>
+<h1 class="ui header"><%= @topic.name %></h1>
 
-<div class="js-topic-source-list">
+<div class="ui items js-topic-source-list">
   <% @topic_sources.each do |topic_source| %>
-    <div class="js-topic-source" id="source-<%= topic_source.source_id %>">
-      "<%= topic_source.source.title %>",
-      <%= topic_source.source.author %>
-      (<%= topic_source.source.isbn %>)
-      <div class="js-topic-source-voter" id="voter-<%= topic_source.source_id %>" href="<%= upvote_topic_source_path(@topic, topic_source.source) %>">
-       (^) Votes: <span class="js-topic-source-vote-count"> <%= topic_source.net_votes %> </span>
+    <div class="item js-topic-source" id="source-<%= topic_source.source_id %>">
+      <div class="like ui corner label js-topic-source-voter" id="voter-<%= topic_source.source_id %>" href="<%= upvote_topic_source_path(@topic, topic_source.source) %>">
+        <i class="like icon"></i>
+      </div>
+      <div class="image">
+        <%= image_tag(topic_source.source.image_url, :alt => "") %>
+      </div>
+      <div class="content">
+        <div class="name"><%= topic_source.source.title %></div>
+        <p class="description"><%= topic_source.source.authors %> (<%= topic_source.source.isbn %>)</p>
+      </div>
+      <div class="extra">
+        Votes: <span class="js-topic-source-vote-count"> <%= topic_source.net_votes %> </span>
       </div>
     </div>
   <% end %>
@@ -23,4 +27,5 @@
 
 <div id="source-add">
   <input class="typeahead" type="text" placeholder="Add a source.">
+  <i class="add icon"></i>
 </div>

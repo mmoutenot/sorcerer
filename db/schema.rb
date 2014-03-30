@@ -15,8 +15,10 @@ ActiveRecord::Schema.define(version: 20140319011619) do
 
   create_table "sources", force: true do |t|
     t.string   "title"
-    t.string   "author"
+    t.string   "authors"
     t.string   "isbn"
+    t.string   "image_url"
+    t.string   "google_external_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

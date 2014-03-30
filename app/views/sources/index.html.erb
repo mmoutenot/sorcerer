@@ -4,7 +4,7 @@
   <thead>
     <tr>
       <th>Title</th>
-      <th>Author</th>
+      <th>Authors</th>
       <th>Isbn</th>
       <th></th>
       <th></th>
@@ -16,7 +16,7 @@
     <% @sources.each do |source| %>
       <tr>
         <td><%= source.title %></td>
-        <td><%= source.author %></td>
+        <td><%= source.authors %></td>
         <td><%= source.isbn %></td>
         <td><%= link_to 'Show', source %></td>
         <td><%= link_to 'Edit', edit_source_path(source) %></td>

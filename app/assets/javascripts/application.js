@@ -17,6 +17,7 @@
 //= require underscore
 //= require flight-for-rails
 //= require twitter/typeahead
+//= require semantic-ui
 //
 //= require_directory ./components
 //
