@@ -23,6 +23,7 @@ gem 'jquery-rails'
 gem 'underscore-rails'
 gem 'flight-for-rails'
 gem 'twitter-typeahead-rails'
+gem 'semantic-ui-rails'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
