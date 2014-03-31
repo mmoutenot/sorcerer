@@ -50,8 +50,7 @@ class SourcesController < ApplicationController
   # POST /sources
   # POST /sources.json
   def create
-    @source = Source.new(source_params)
-
+    @source = Source.new_from_google_books(source_params[:isbn])
     respond_to do |format|
       if @source.save
         format.html { redirect_to @source, :notice => 'Source was successfully created.' }
@@ -95,6 +94,7 @@ class SourcesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def source_params
-      params.require(:source).permit(:title, :author, :isbn)
+      # params.require(:source).permit(:title, :authors, :isbn, :image_url)
+      params.require(:isbn)
     end
 end

@@ -4,7 +4,8 @@ class CreateSources < ActiveRecord::Migration
       t.string :title
       t.string :authors
       t.string :isbn
-      t.string :image_url
+      t.string :image_hi_url
+      t.string :image_lo_url
       t.string :google_external_id
 
       t.timestamps
