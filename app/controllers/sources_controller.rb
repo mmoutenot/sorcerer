@@ -2,6 +2,7 @@ require 'googlebooks'
 
 class SourcesController < ApplicationController
   before_action :set_source, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /sources
   # GET /sources.json
