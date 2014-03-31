@@ -2,10 +2,15 @@
 
 <h1 class="ui header"><%= @topic.name %></h1>
 
+<div id="source-add" class="ui small input">
+  <input class="typeahead" type="text" placeholder="Add a source...">
+  <i class="add large icon"></i>
+</div>
+
 <div class="ui items topic-sources js-topic-source-list">
   <% @topic_sources.each do |topic_source| %>
     <div class="item js-topic-source" id="source-<%= topic_source.source_id %>">
-      <div class="like ui corner label js-topic-source-voter" id="voter-<%= topic_source.source_id %>" href="<%= upvote_topic_source_path(@topic, topic_source.source) %>">
+      <div class="upvote ui corner label js-topic-source-voter" id="voter-<%= topic_source.source_id %>" href="<%= upvote_topic_source_path(@topic, topic_source.source) %>">
         <i class="circle up icon"></i>
       </div>
       <div class="image">
@@ -24,8 +29,3 @@
 
 <%= link_to 'Edit', edit_topic_path(@topic) %> |
 <%= link_to 'Back', topics_path %>
-
-<div id="source-add">
-  <input class="typeahead" type="text" placeholder="Add a source.">
-  <i class="add icon"></i>
-</div>
