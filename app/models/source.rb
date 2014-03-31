@@ -2,8 +2,10 @@ class Source < ActiveRecord::Base
   has_many :topic_sources
   has_many :topics, :through => :topic_sources
 
-  def new_from_google_books(isbn)
+  def self.new_from_google_books(isbn)
     book = GoogleBooks.search("isbn:#{isbn}").first
+    return nil unless book
+
     Source.new({
       :title => book.title,
       :authors => book.authors,
