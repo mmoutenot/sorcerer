@@ -2,7 +2,7 @@ $ ->
   SourceAdd = flight.component ->
     @defaultAttrs
       submitButtonSelector: '.js-submit'
-      submitUrl: '/sources'
+      submitUrl: '/topics/1/sources'
 
     @after 'initialize', ->
       @on @attr.submitButtonSelector, 'click', @submit

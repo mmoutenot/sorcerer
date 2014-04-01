@@ -52,9 +52,11 @@ class SourcesController < ApplicationController
   # POST /sources.json
   def create
     @source = Source.new_from_google_books(source_params[:isbn])
+    @topic = Topic.find(params[:topic_id])
     # TODO add source to Topic
     respond_to do |format|
-      if @source.save
+      if @source.save && @topic
+        @topic.sources << @source
         format.html { redirect_to @source, :notice => 'Source was successfully created.' }
         format.json { render action: 'show', :status => :created, :location => @source }
       else

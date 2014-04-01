@@ -2,14 +2,12 @@ Sorcerer::Application.routes.draw do
   devise_for :users
   root to: "home#index"
 
-  resources :sources do
-    collection do
-      get 'search'
-    end
+  resources :sources, :only => [:show, :index, :new, :edit, :update, :destroy] do
+    get 'search', :on => :collection
   end
 
   resources :topics do
-    resources :sources do
+    resources :sources, :only => [:create, :destroy] do
       member do
         post 'upvote'
       end
