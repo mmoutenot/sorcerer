@@ -6,13 +6,32 @@
   font-size: 1.4em;
 }
 
-// New Topic
+// New Source
 #source-add {
-  input {
-    width: 400px;
-  }
-}
+  $input-width: 400px;
 
-.add.large.icon {
-  margin-top: 1em;
+  input {
+    width: $input-width;
+  }
+
+  .add.large.icon {
+    margin-top: 1em;
+  }
+
+  .tt-dropdown-menu {
+    width: $input-width;
+    margin-top: 5px;
+    padding: 5px 0;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+
+  .tt-suggestion {
+    display: block;
+    padding: 3px 10px;
+    &.tt-cursor {
+      background: #eee;
+    }
+  }
 }
