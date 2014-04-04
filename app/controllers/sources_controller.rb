@@ -39,7 +39,7 @@ class SourcesController < ApplicationController
       {
         :title => b.title,
         :isbn => b.isbn,
-        :g_id => b.id,
+        :google_external_id => b.id,
         :authors => b.authors,
         :image => b.image_link,
       }
@@ -48,10 +48,11 @@ class SourcesController < ApplicationController
     render :json => g_sources
   end
 
-  # POST /sources
-  # POST /sources.json
+  # POST /topics/1/sources
+  # POST /topics/1/sources.json
   def create
-    @source = Source.new_from_google_books(source_params[:isbn])
+    @source = Source.new_from_google_books(source_params[:google_external_id])
+    # TODO error if no topic_id
     @topic = Topic.find(params[:topic_id])
     # TODO add source to Topic
     respond_to do |format|

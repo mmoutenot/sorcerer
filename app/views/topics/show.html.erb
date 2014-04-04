@@ -2,7 +2,7 @@
 
 <h1 class="ui header"><%= @topic.name %></h1>
 
-<div id="source-add" class="ui small input js-source-add">
+<div id="source-add" class="ui small input js-source-add" data-href="<%= topic_sources_path(@topic) %>">
   <input class="typeahead" type="text" placeholder="Add a source...">
   <i class="add large icon js-submit"></i>
 </div>
