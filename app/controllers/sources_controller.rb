@@ -55,15 +55,11 @@ class SourcesController < ApplicationController
     # TODO error if no topic_id
     @topic = Topic.find(params[:topic_id])
     # TODO add source to Topic
-    respond_to do |format|
-      if @source.save && @topic
-        @topic.sources << @source
-        format.html { redirect_to @source, :notice => 'Source was successfully created.' }
-        format.json { render action: 'show', :status => :created, :location => @source }
-      else
-        format.html { render :action => 'new' }
-        format.json { render :json => @source.errors, :status => :unprocessable_entity }
-      end
+    if @source.save && @topic
+      @topic.sources << @source
+      render :json => @source
+    else
+      render :json => @source.errors, :status => :unprocessable_entity
     end
   end
 
@@ -99,6 +95,6 @@ class SourcesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def source_params
-      params.require(:source).permit(:isbn)
+      params.require(:source).permit(:google_external_id)
     end
 end
