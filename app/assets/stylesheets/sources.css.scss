@@ -1,3 +1,28 @@
 // Place all the styles related to the Sources controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.upvote.ui {
+  font-size: 1.8em;
+}
+
+.topic-sources {
+  .topic-source.item{
+    width: 100%;
+    height: 200px;
+    min-height: 100px;
+
+    .ui.grid.row, .column {
+      height:inherit;
+    }
+
+    img.image {
+      height:150px;
+      margin-left: 20px;
+      box-shadow: 2px 2px 2px 0px rgba(50, 50, 50, 0.75);
+    }
+
+  }
+}
+
+

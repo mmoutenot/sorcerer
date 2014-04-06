@@ -2,26 +2,34 @@
 
 <h1 class="ui header"><%= @topic.name %></h1>
 
-<div id="source-add" class="ui small input js-source-add" data-href="<%= topic_sources_path(@topic) %>">
+<div id="source-add" class="ui small input js-source-add">
   <input class="typeahead" type="text" placeholder="Add a source...">
-  <!-- <i class="add large icon js&#45;submit"></i> -->
+  <i class="add large icon js-submit"></i>
 </div>
 
 <div class="ui items topic-sources js-topic-source-list">
   <% @topic_sources.each do |topic_source| %>
-    <div class="item js-topic-source" id="source-<%= topic_source.source_id %>">
+    <div class="item topic-source js-topic-source" id="source-<%= topic_source.source_id %>">
       <div class="upvote ui corner label js-topic-source-voter" id="voter-<%= topic_source.source_id %>" href="<%= upvote_topic_source_path(@topic, topic_source.source) %>">
+        <div class="js-topic-source-vote-count vote-count floating ui black label">
+          0
+        </div>
         <i class="circle up icon"></i>
       </div>
-      <div class="image">
-        <%= image_tag(topic_source.source.image_hi_url) %>
-      </div>
-      <div class="content">
-        <div class="name"><%= topic_source.source.title %></div>
-        <p class="description"><%= topic_source.source.authors %> (<%= topic_source.source.isbn %>)</p>
-      </div>
-      <div class="extra">
-        Votes: <span class="js-topic-source-vote-count"> <%= topic_source.net_votes %> </span>
+      <div class="ui grid row">
+        <div class="three wide column">
+          <img class="image" src=<%= topic_source.source.image_lo_url %>>
+        </div>
+        <div class="ten wide column">
+          <div class="content">
+            <h3 class="title"><%= topic_source.source.title %></h3>
+            <p class="authors">Author(s): <%= topic_source.source.authors %> </p>
+            <p class="isbn">ISBN: <%= topic_source.source.isbn %></p>
+          </div>
+        </div>
+        <div class="extra">
+          Votes: <span class="js-topic-source-vote-count"> <%= topic_source.net_votes %> </span>
+        </div>
       </div>
     </div>
   <% end %>
