@@ -1,6 +1,7 @@
 // Place all the styles related to the Topics controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+$input-width: 400px;
 
 .ui.header {
   float:left;
@@ -10,7 +11,6 @@
 #source-add {
   float: right;
   padding-top: 20px;
-  $input-width: 400px;
 
   input {
     width: $input-width;
@@ -35,5 +35,12 @@
     &.tt-cursor {
       background: #eee;
     }
+  }
+}
+
+// Topic Search
+#topic-search {
+  input#q {
+    width: $input-width;
   }
 }

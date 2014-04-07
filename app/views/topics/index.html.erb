@@ -1,27 +1,31 @@
-<h1>Listing topics</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @topics.each do |topic| %>
-      <tr>
-        <td><%= topic.name %></td>
-        <td><%= link_to 'Show', topic %></td>
-        <td><%= link_to 'Edit', edit_topic_path(topic) %></td>
-        <td><%= link_to 'Destroy', topic, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
+<h1>Topics</h1>
 
 <%= link_to 'New Topic', new_topic_path %>
+
+<div class="ui grid">
+
+  <div id="suggested-topics" class="three wide column">
+    <h4>Suggested Topics</h4>
+    <a href="/topics/1">Stalin</a>
+  </div>
+
+  <div id="topic-search" class="thirteen wide column">
+    <%= form_tag topics_path, :method => :get do %>
+      <div id="topic-search" class="ui small input">
+        <%= text_field_tag :q, nil, :placeholder => "Search" %>
+      </div>
+      <%= submit_tag "Search", :name => nil %>
+    <% end %>
+
+    <div id="topic-search-results">
+      <% @topics.each do |topic| %>
+        <div class="topic">
+          <a href="<%= topic_path topic %>">
+            <h3><%= topic.name %></h3>
+          </a>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+</div> <!-- end grid -->
