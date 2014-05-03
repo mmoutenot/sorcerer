@@ -15,6 +15,7 @@ $ ->
         type: "POST"
         url: @$voter.attr 'href'
         success: =>
+          debugger
           $voteCount = @select 'voteCountSelector'
           $voteCount.text(+$voteCount.text() + 1)
           console.log 'triggering vote event'
